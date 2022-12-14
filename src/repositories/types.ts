@@ -1,3 +1,14 @@
+export interface Contracts {
+  tatoken: ContractInfo;
+}
+
+export interface ContractInfo {
+  webSocketApi: string;
+  address: string;
+  abi: any;
+  events: TransactionEvent[];
+}
+
 export interface TransactionEvent {
   blockNumber: number;
   blockHash: string;

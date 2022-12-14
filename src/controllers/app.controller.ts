@@ -1,17 +1,15 @@
 import { Controller, Get, Param, Res, HttpStatus } from '@nestjs/common';
 import { Response } from 'express';
 import { AppService } from '../services/app.service';
-import { transactionEvents } from '../ethers/ethers';
-import { TransactionEvent } from 'src/ethers/types';
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get('transactions')
-  getTransactions(@Res() response: Response): string {
+  getTransactions(@Res() response: Response): void {
     try {
-      return JSON.stringify(transactionEvents);
+      response.send(this.appService.getTransactionEvents());
     } catch (err) {
       response
         .status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -23,19 +21,14 @@ export class AppController {
   getUserTransactionEvents(
     @Param('userAddress') userAddress: string,
     @Res() response: Response,
-  ): string {
+  ): void {
     try {
-      if (!userAddress.match(/^0x[a-fA-F0-9]{40}$/)) {
-        throw Error('incorrect user address');
+      const userTransactionEvents =
+        this.appService.getUserTransactionEvents(userAddress);
+      if (userTransactionEvents.length > 0) {
+        response.send(userTransactionEvents);
       }
-
-      const userTransactionEvents: TransactionEvent[] =
-        transactionEvents.filter((item) => item.args[0] === userAddress);
-
-      if (transactionEvents.length > 0) {
-        return JSON.stringify(userTransactionEvents);
-      }
-      return `No events from ${userAddress} was fined`;
+      response.send(`No events from ${userAddress} was fined`);
     } catch (err) {
       response
         .status(HttpStatus.INTERNAL_SERVER_ERROR)
