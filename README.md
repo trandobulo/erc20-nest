@@ -3,7 +3,7 @@
 
 ## Description
 
-Application for tracking transfer events og TAToken in Goerli testnet
+Application for tracking transfer events of TAToken in Goerli testnet
 
 ## Installation
 
@@ -26,7 +26,7 @@ $ npm run start:prod
 
 ## Functionality
 
-| Query type | Endpoint           | Action                                |
-| ---------- | ------------------ | ------------------------------------- |
-| GET        | /transactions      | Get all events                        |
-| GET        | /user/:userAddress | Get events from <userAddress> address |
+| Query type | Endpoint           | Action                               |
+| ---------- | ------------------ | ------------------------------------ |
+| GET        | /transactions      | Get all events                       |
+| GET        | /user/:userAddress | Get events from :userAddress address |
