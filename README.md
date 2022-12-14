@@ -26,8 +26,7 @@ $ npm run start:prod
 
 ## Functionality
 
-To work with request and response bodies use JSON format
-
-| Query type | Endpoint | Action |
-| GET | /transactions | Get all events. |
-| GET | /user/:userAddress | Get events from :userId address |
+| Query type | Endpoint           | Action                          |
+| ---------- | ------------------ | ------------------------------- |
+| GET        | /transactions      | Get all events                  |
+| GET        | /user/:userAddress | Get events from :userId address |
