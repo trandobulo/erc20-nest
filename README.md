@@ -26,7 +26,7 @@ $ npm run start:prod
 
 ## Functionality
 
-| Query type | Endpoint           | Action                          |
-| ---------- | ------------------ | ------------------------------- |
-| GET        | /transactions      | Get all events                  |
-| GET        | /user/:userAddress | Get events from :userId address |
+| Query type | Endpoint           | Action                                |
+| ---------- | ------------------ | ------------------------------------- |
+| GET        | /transactions      | Get all events                        |
+| GET        | /user/:userAddress | Get events from <userAddress> address |
