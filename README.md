@@ -13,6 +13,16 @@ $ npm install
 
 ## Running the app
 
+Before running the app you should create .env file with such rows:
+
+| Const    | Type   | Description                |
+| -------- | ------ | -------------------------- |
+| HOSTNAME | string | Postgres database location |
+| LOGIN    | string | Postgres database login    |
+| PASS     | string | Postgres database password |
+| PORT     | number | Postgres server port       |
+| DATABASE | string | Postgres database name     |
+
 ```bash
 # development
 $ npm run start

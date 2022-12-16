@@ -2,7 +2,7 @@
   "name": "erc20-nest",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": "Trandobulo Aleksandr",
   "private": true,
   "license": "MIT",
   "scripts": {
@@ -25,6 +25,7 @@
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/sequelize": "^9.0.0",
+    "dotenv": "^16.0.3",
     "ethers": "^5.7.2",
     "mysql2": "^2.3.3",
     "pg": "^8.8.0",

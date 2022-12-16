@@ -7,15 +7,15 @@ export class TransactionsController {
   constructor(private transactionsService: TransactionsService) {}
 
   @Get('transactions')
-  getAllTransactions(@Res() response: Response): void {
+  async getAllTransactions(@Res() response: Response) {
     try {
-      this.transactionsService.getAllTransactions().then((res) => {
-        if (res && res.length > 0) {
-          response.send(res);
-        } else {
-          response.send(`No events were fined`);
-        }
-      });
+      const transactions = await this.transactionsService.getAllTransactions();
+
+      if (transactions && transactions.length > 0) {
+        response.send(transactions);
+      } else {
+        response.send(`No events were fined`);
+      }
     } catch (err) {
       response
         .status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -23,19 +23,20 @@ export class TransactionsController {
     }
   }
 
-  @Get('user/:userAddress')
-  getUserTransactionEvents(
+  @Get('transactions/:userAddress')
+  async getUserTransactionEvents(
     @Param('userAddress') userAddress: string,
     @Res() response: Response,
-  ): void {
+  ) {
     try {
-      this.transactionsService.getUserTransaction(userAddress).then((res) => {
-        if (res && res.length > 0) {
-          response.send(res);
-        } else {
-          response.send(`No events from ${userAddress} were fined`);
-        }
-      });
+      const transactions = await this.transactionsService.getUserTransaction(
+        userAddress,
+      );
+      if (transactions && transactions.length > 0) {
+        response.send(transactions);
+      } else {
+        response.send(`No events from ${userAddress} were fined`);
+      }
     } catch (err) {
       response
         .status(HttpStatus.INTERNAL_SERVER_ERROR)
