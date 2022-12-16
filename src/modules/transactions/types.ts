@@ -6,7 +6,6 @@ export interface ContractInfo {
   webSocketApi: string;
   address: string;
   abi: any;
-  events: TransactionEvent[];
 }
 
 export interface TransactionEvent {
@@ -22,4 +21,10 @@ export interface TransactionEvent {
   event: string;
   eventSignature: string;
   args: [string, string, { _hex: string; _isBigNumber: boolean }];
+}
+
+export interface ITokensRepository {
+  contracts: { tatoken: ContractInfo };
+  addToken(contractName: string, contractInfo: ContractInfo): void;
+  getToken(contractName: string): ContractInfo;
 }
