@@ -5,7 +5,7 @@ import { TransactionsService } from './modules/transactions/transactions.service
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   await app.listen(3000);
-  app.get(TransactionsService).trackTransfers();
+  app.get(TransactionsService).trackTransfers('tatoken');
 }
 
 bootstrap();

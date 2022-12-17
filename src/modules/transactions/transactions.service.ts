@@ -47,8 +47,8 @@ export class TransactionsService {
     });
   }
 
-  trackTransfers(): void {
-    const tokenInfo = this.tokensRepository.getToken('tatoken');
+  trackTransfers(contractName: string): void {
+    const tokenInfo = this.tokensRepository.getToken(contractName);
 
     try {
       const provider = new ethers.providers.WebSocketProvider(
